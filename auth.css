@@ -1,84 +1,90 @@
-/**
- * Modern & Clean UI Revamp
- * Focus: Minimalism, whitespace, strong typography, and accessibility.
- * Palette: Light background, dark text, and a single vibrant accent color.
- */
+/* ---
+Modern UI Revamp 2.0
+Design Philosophy:
+- Palette: A sophisticated, neutral palette with a single, strong accent for clarity.
+- Depth & Elevation: Subtle, layered shadows replace harsh borders for a tactile feel.
+- Typography: A clear typographic scale guides the user's eye and improves readability.
+- Spacing: A consistent 8px grid system creates a balanced and uncluttered layout.
+- Interaction: Smooth, purposeful transitions provide feedback and make the UI feel alive.
+--- */
 
 :root {
-    --background-color: #f8f9fa; /* Very light grey for a soft background */
-    --surface-color: #ffffff;    /* White for primary containers */
-    --text-primary: #212529;      /* Dark grey for high-readability text */
-    --text-secondary: #6c757d;    /* Lighter grey for subtitles and secondary info */
-    --border-color: #dee2e6;      /* Subtle border for inputs and separators */
-    --accent-color: #007bff;      /* A clean, vibrant blue for interactive elements */
-    --accent-color-hover: #0069d9; /* A slightly darker blue for hover states */
-    --danger-color: #dc3545;       /* For warnings or critical notices */
-    --border-radius: 8px;         /* Consistent rounded corners */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --radius: 0.75rem; /* 12px */
+    
+    /* Light Theme Palette */
+    --background: #f7f7f8;       /* Soft, off-white background */
+    --foreground: #111111;       /* Near-black for primary text */
+    --foreground-muted: #666666; /* Grey for secondary text */
+
+    --card: #ffffff;             /* Pure white for containers */
+    --card-border: #ededed;      /* Subtle border for definition */
+    
+    --primary: #4f46e5;          /* A strong, modern indigo for actions */
+    --primary-foreground: #ffffff; /* Text on primary buttons */
+
+    --input-border: #d1d1d1;
+    --input-focus-ring: rgba(79, 70, 229, 0.2);
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 body {
     margin: 0;
-    padding: 0;
-    font-family: var(--font-family);
-    background: var(--background-color);
+    padding: 24px;
+    font-family: var(--font-sans);
+    background: var(--background);
+    color: var(--foreground);
     min-height: 100vh;
     overflow-x: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-primary);
-}
-
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 100vh;
-    padding: 40px 20px;
-    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .modal-content {
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-color);
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--card-border);
     width: 100%;
-    max-width: 800px;
-    min-height: 500px;
+    max-width: 880px; /* Increased width for a more spacious feel */
+    min-height: 600px;
     display: flex;
     overflow: hidden;
-    transition: box-shadow 0.2s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .account-sidebar {
-    width: 280px;
-    background: var(--surface-color);
-    border-right: 1px solid var(--border-color);
+    width: 300px;
+    background: #fcfcfc; /* A slightly different white to distinguish the panel */
+    border-right: 1px solid var(--card-border);
     display: flex;
     flex-direction: column;
     padding: 24px 0;
 }
 
 .sidebar-header {
-    padding: 0 24px 16px 24px;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 16px;
+    padding: 8px 24px 24px 24px;
+    margin-bottom: 8px;
 }
 
 .sidebar-header h2 {
-    font-size: 18px;
+    font-size: 1.125rem; /* 18px */
     font-weight: 600;
     margin: 0 0 4px 0;
+    letter-spacing: -0.02em;
 }
 
 .sidebar-header p {
-    font-size: 14px;
-    color: var(--text-secondary);
+    font-size: 0.875rem; /* 14px */
+    color: var(--foreground-muted);
     margin: 0;
 }
 
@@ -92,22 +98,25 @@ body {
     display: flex;
     align-items: center;
     padding: 12px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    background: transparent;
-    border: 2px solid transparent;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
     margin-bottom: 8px;
+    border-radius: 0.5rem; /* 8px */
+    cursor: pointer;
+    position: relative;
+    border: 2px solid transparent;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .account-item:hover {
-    background: var(--background-color);
+    background-color: var(--background);
+    transform: scale(1.02);
 }
 
 .account-item.active {
-    background: #e7f3ff; /* Light blue background for active state */
-    border-color: var(--accent-color);
+    background-color: #f0efff; /* Light indigo background */
     font-weight: 600;
+}
+.account-item.active .account-item-info h3 {
+    color: var(--primary);
 }
 
 .account-item img {
@@ -115,43 +124,28 @@ body {
     height: 40px;
     border-radius: 50%;
     margin-right: 16px;
+    box-shadow: var(--shadow-sm);
 }
 
 .account-item-info h3 {
-    font-size: 15px;
+    font-size: 1rem; /* 16px */
     font-weight: 500;
-    color: var(--text-primary);
-    margin: 0 0 4px 0;
+    color: var(--foreground);
+    margin: 0 0 2px 0;
+    transition: color 0.2s ease;
 }
 
 .account-item-info p {
-    font-size: 13px;
-    color: var(--text-secondary);
+    font-size: 0.8125rem; /* 13px */
+    color: var(--foreground-muted);
     margin: 0;
 }
 
-.add-account-btn {
-    margin: 16px 24px 0;
-    padding: 12px 20px;
-    background: transparent;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    color: var(--text-primary);
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.add-account-btn:hover {
-    background: var(--background-color);
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-}
+/* --- Main Content Area --- */
 
 .main-content, .welcome-area {
     flex: 1;
-    padding: 48px 40px;
+    padding: 64px 48px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -163,155 +157,148 @@ body {
     display: none;
 }
 
-.welcome-logo img {
-    width: 100px;
-    height: 100px;
+.logo-container img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
     margin-bottom: 24px;
+    box-shadow: var(--shadow-md);
 }
 
-.welcome-content h1, .main-content h1 {
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0 0 12px 0;
+.main-content h1, .welcome-content h1 {
+    font-size: 1.75rem; /* 28px */
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--foreground);
+    margin: 0 0 8px 0;
 }
 
-.welcome-content p, .main-content .subtitle {
-    font-size: 16px;
-    color: var(--text-secondary);
-    margin: 0 0 32px 0;
-    line-height: 1.5;
-    max-width: 320px;
+.main-content .subtitle, .welcome-content p {
+    font-size: 1rem; /* 16px */
+    color: var(--foreground-muted);
+    margin: 0 auto 32px auto;
+    line-height: 1.6;
+    max-width: 350px;
 }
 
 .form-group {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     width: 100%;
-    max-width: 320px;
+    max-width: 350px;
     text-align: left;
 }
 
-input {
+.main-content input {
     width: 100%;
-    padding: 12px 16px;
-    font-size: 16px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    background: var(--surface-color);
-    color: var(--text-primary);
+    height: 48px;
+    padding: 0 16px;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    border: 1px solid var(--input-border);
+    border-radius: 0.5rem; /* 8px */
+    background: var(--card);
+    color: var(--foreground);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-input:focus {
+.main-content input:focus {
     outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--input-focus-ring);
 }
 
-input::placeholder {
-    color: #adb5bd;
-}
+/* --- Buttons --- */
 
-/* Base button style */
 .btn {
-    padding: 14px 24px;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 500;
-    font-family: inherit;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    min-height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
     width: 100%;
-    max-width: 320px;
+    max-width: 350px;
+    padding: 0 24px;
     margin-bottom: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    border-radius: 0.5rem; /* 8px */
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--input-focus-ring);
 }
 
 .btn-primary {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    color: white;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
-    background: var(--accent-color-hover);
-    border-color: var(--accent-color-hover);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
     box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:disabled {
-    background: #a9cffa;
-    border-color: #a9cffa;
+    background: #a5a2f5;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
 }
 
 .btn-secondary {
-    background: transparent;
-    border-color: var(--border-color);
-    color: var(--text-primary);
+    background: var(--card);
+    color: var(--foreground);
+    border-color: var(--card-border);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
-    background: var(--background-color);
-    color: var(--accent-color);
-    border-color: var(--accent-color);
+    border-color: var(--input-border);
+    background: var(--background);
 }
 
-.security-notice {
-    background: #fffbe6;
-    border: 1px solid #ffe58f;
-    border-radius: 6px;
-    padding: 16px;
-    font-size: 14px;
-    color: #8a6d3b;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.security-notice .warning-icon {
-    color: #ffc107;
-    font-size: 20px;
-}
-
+/* --- Spinner --- */
 #loading-overlay {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(4px);
 }
 
 .spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid var(--border-color);
-    border-top: 4px solid var(--accent-color);
+    width: 48px;
+    height: 48px;
+    border: 4px solid #e0e0e0;
+    border-top-color: var(--primary);
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 1s ease-in-out infinite;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    to { transform: rotate(360deg); }
 }
 
+/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
+    body { padding: 0; }
     .modal-content {
         flex-direction: column;
-        min-height: auto;
-        height: auto;
+        border-radius: 0;
+        min-height: 100vh;
+        border: none;
     }
-
     .account-sidebar {
         width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
         height: auto;
-    }
-
-    .main-content, .welcome-area {
-        padding: 40px 24px;
+        border-right: none;
+        border-bottom: 1px solid var(--card-border);
     }
 }
